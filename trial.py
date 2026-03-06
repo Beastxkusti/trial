@@ -1,26 +1,24 @@
+import streamlit as st
+import numpy as np
 import matplotlib.pyplot as plt
 
-a = float(input('a = '))
-b = float(input('b = '))
-c = float(input('c = '))
+st.title("Visualisasi Fungsi Kuadrat dan Turunannya")
 
-lb = float(input('batas bawah = '))
-ub = float(input('batas atas = '))
+a = st.slider("a", -5.0, 5.0, 1.0)
+b = st.slider("b", -10.0, 10.0, 0.0)
+c = st.slider("c", -10.0, 10.0, 0.0)
 
-axis_x = []
-axis_y = []
+x = np.linspace(-10,10,200)
 
-x = lb
-while x <= ub:
-    axis_x.append(x)
-    
-    y = a*x**2 + b*x + c
-    axis_y.append(y)
-    
-    x += 0.1
+y = a*x**2 + b*x + c
+dy = 2*a*x + b
 
-plt.plot(axis_x, axis_y)
-plt.xlabel("x")
-plt.ylabel("f(x)")
-plt.title(f"Grafik f(x) = {a}x² + {b}x + {c}")
-plt.show()
+fig, ax = plt.subplots()
+
+ax.plot(x,y,label="f(x)")
+ax.plot(x,dy,label="f'(x)")
+
+ax.legend()
+ax.grid(True)
+
+st.pyplot(fig)
