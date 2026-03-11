@@ -1,22 +1,22 @@
 import streamlit as st
 import numpy as np
-import mathplotlib.pyplot as plt
+import matplotlib.pyplot as plt
 
 st.title("Pengaruh koefisien a,b,c pada grafik parabolic")
 
-a=st.slider("a",-2,2,1)
-b=st.slider("b",-2,2,1)
-c=st.slider("c",-2,2,1)
+a = st.slider("a", -2, 2, 1)
+b = st.slider("b", -2, 2, 1)
+c = st.slider("c", -2, 2, 1)
 
-x=np.linspace(-5, 5,200)
+x = np.linspace(-5, 5, 200)
 
-y=a*x**+b*x+c
+y = a * x**2 + b * x + c 
 
-fig,ax=plt.subplots()
+fig, ax = plt.subplots()
 
-ax.plot(x,y,"f(x)")
+ax.plot(x, y, label="f(x)")
 
 ax.grid(True)
 ax.legend()
 
-style.pyplot(fig)
+st.pyplot(fig)
